@@ -6,7 +6,7 @@
 /*   By: fnieves- <fnieves-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 11:49:32 by fnieves-          #+#    #+#             */
-/*   Updated: 2022/04/28 19:48:03 by fnieves-         ###   ########.fr       */
+/*   Updated: 2022/04/28 19:53:38 by fnieves-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,16 @@
 # define __PRINTF_H
 
 
+
 # include <stdarg.h>
 # include <unistd.h>
 # include <stdlib.h>
+
+
+// las librerias de abajo no son necesarias
+#include <stdio.h>
+#include <string.h>
+#include <unistd.h>
 
 int	ft_printf(const char *str, ...);
 
@@ -79,3 +86,6 @@ char	*ft_itoa(int n)
 	number_str = str_numb(number_str, (unsigned int)n, cipher);
 	return (number_str);
 }
+
+
+#endif

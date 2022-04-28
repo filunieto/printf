@@ -1,51 +1,57 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdarg.h>
-#include <string.h>
-#include <unistd.h>
- 
+#include "printf.h"
 
+// seguir a;adiendo los casos , y escribiendo directamente en lugar de usar el buffer
 int print (char * str, ...)
 {
-	va_list vl;
+	va_list ap;
 	int i = 0, j=0;
 	char buff[100]={0};
-	va_start( vl, str );
+	va_start(ap, str);
 
 	while (str && str[i])
 	{
-		if(str[i] == '%')
+		if (str[i] == '%')
 		{
- 		    i++;
- 		    switch (str[i]) 
- 		    {
-	 		    case 'c': 
-	 		    {
-	 		        buff[j] = (char)va_arg( vl, int );
-	 		        j++;
-	 		        break;
-	 		    }
-        	}
-     	} 
+			i++;
+			if (str[i] == 'c')
+			{
+				buff[j] = (char)va_arg(ap, int);
+				j++;
+			}
+			else if (str[i] == 'd')
+			{
+				buff[j] = (char)va_arg(ap, int);
+				j++;
+			}
+			else if (str[i] == '%')
+			{
+				write(1, "%%", 1);
+				j++;
+			}
+			else
+			{
+				write(1, "error: invalid conversion specifier\n", 37);
+				return (0);
+			}
+		}
      	else 
 	    {
-	       	buff[j] =str[i];
+	       	write(1, &str[i], 1);
 	       	j++;
 	    }
 	    i++;
-	} 
-    write(1, buff, j); 
-    va_end(vl);
+	}
+    va_end(ap);
     return j;
 }
- 
+
 int	main(void)
 {
 	char	*str;
 	int	i;
 	char m = 'Y';
 
-	str = "mi mamam me mima %c";
+	str = "mi mamam me mimo porcentaje %% y mas";
 	i = print (str, m);
 	write(1, "\n", 1);
 	printf("%i\n", i);
