@@ -52,7 +52,7 @@ Mkfile.old
 dkms.conf
 
 # specific files printf
-test/
+
 
 # files from vs code
 /.vscode
