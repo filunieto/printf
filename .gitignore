@@ -51,7 +51,7 @@ Module.symvers
 Mkfile.old
 dkms.conf
 
-# specific files printf
+# specific files printf. everything under test folder :  test/
 
 
 # files from vs code
