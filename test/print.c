@@ -4,7 +4,7 @@ int main(void)
 {
 	int	i;
 
-	i = printf("mi mama\n");
+	i = printf("string : %s, charcter: %c, numero: %i   \n", "felipe", 'd', 45);
 	printf("%i\n", i);
 	return (0);
 }
