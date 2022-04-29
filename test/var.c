@@ -1,6 +1,7 @@
 #include <stdarg.h>
 #include <stdio.h>
 
+// ejemplo simple para funciones cuadraticas con numeros. no muy util
 double average(int count, ...)
 {
 	va_list ap;

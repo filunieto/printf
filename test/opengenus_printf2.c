@@ -5,8 +5,9 @@ int print (char * str, ...)
 {
 	va_list ap;
 	int i = 0, j=0;
-	char buff[100]={0};
 	va_start(ap, str);
+	char	c;
+	char *temp;
 
 	while (str && str[i])
 	{
@@ -15,12 +16,16 @@ int print (char * str, ...)
 			i++;
 			if (str[i] == 'c')
 			{
-				buff[j] = (char)va_arg(ap, int);
+				c = (char)va_arg(ap, int);
+				write (1, &c, 1);
 				j++;
 			}
 			else if (str[i] == 'd')
 			{
-				buff[j] = (char)va_arg(ap, int);
+
+				temp = ft_itoa(va_arg(ap, int));
+				write (1, temp, 15);
+				free(temp);
 				j++;
 			}
 			else if (str[i] == '%')
@@ -30,7 +35,7 @@ int print (char * str, ...)
 			}
 			else
 			{
-				write(1, "error: invalid conversion specifier\n", 37);
+				j = j + write(1, "error: invalid conversion specifier\n", 37);
 				return (0);
 			}
 		}
@@ -50,9 +55,12 @@ int	main(void)
 	char	*str;
 	int	i;
 	char m = 'Y';
+	char n = 'W';
+	int number1 = -256;
+	int number2 = -1548;
 
-	str = "mi mamam me mimo porcentaje %% y mas";
-	i = print (str, m);
+	str = "mi mamam me mimo %c porcentaje %% y %c  otro %d y otro %d";
+	i = print (str, m, n, number1, number2);
 	write(1, "\n", 1);
 	printf("%i\n", i);
 	return (0);
