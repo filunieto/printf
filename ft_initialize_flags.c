@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_initialize_flags.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fnieves- <fnieves-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/28 11:49:38 by fnieves-          #+#    #+#             */
-/*   Updated: 2022/04/30 19:43:53 by fnieves-         ###   ########.fr       */
+/*   Created: 2022/04/30 18:51:09 by fnieves-          #+#    #+#             */
+/*   Updated: 2022/04/30 19:28:38 by fnieves-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
-
-void	ft_parser(t_flags *tab, t_chain *chain);
-
-int	ft_printf(const char *format, ...)
+/*
+ * Initialize the flags to 0 to start to 
+ * work with.
+*/
+void	ft_initialize_flags(t_flags *tab)
 {
-	va_list	ap;
-	t_flags	*tab;
-	t_chain	*chain;
-	
-	va_start(ap, format);
-	ft_initialize_flags(tab);
-	ft_initialize_chain(chain, format, ap);
-	ft_parser(tab, chain);
-	va_end(ap);
-	return (0); //aqu'i hay que devolver chain->char_printed
+	tab->len = 0;
+	tab->minus = 0;
+	tab->plus = 0;
+	tab->space = 0;
+	tab->zero = 0;
+	tab->hash = 0;
+	tab->width = 0;
+	tab->precisiontf = 0;
+	tab->precision = 0;
+	tab->lenght = 0;
 }
