@@ -6,26 +6,29 @@
 /*   By: fnieves- <fnieves-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 11:49:32 by fnieves-          #+#    #+#             */
-/*   Updated: 2022/04/30 19:44:10 by fnieves-         ###   ########.fr       */
+/*   Updated: 2022/05/03 13:02:56 by fnieves-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # ifndef __PRINTF_H
 # define __PRINTF_H
 
+#include<stdio.h> //recuerda borrarla. solo para testear funciones con printf
 
 # include <stdarg.h>
 # include "../../libft proyecto/libft/libft.h"
 
-#define FLAGS1 "cspdiouxXfy%#-+ .*0123456789hLljz"
-#define FLAGS2 "#-+ .*0123456789hLljz"
-#define FLAGS3 "cspdiouxXfy%"
+#define FLAGS_GLOBAL "cspdiouxXf%#-+ .*0123456789hLljz"
+#define FLAGS_CONVERSION "cspdiouxXf%"
+#define FLAGS_PRECISION "#-+ .*0123456789hLljz"
+
 
 typedef struct s_flags
 {	
 	int		i; //para que?
 	int		len; //para que?
 	
+	char	type_conversion;
 	int		minus;
 	int		plus;
 	int		space;
@@ -48,11 +51,9 @@ typedef struct s_chain
 
 
 int		ft_printf(const char *str, ...);
-void	ft_initialize_flags(t_flags *tab);
-void	ft_initialize_chain(t_chain *chain, const char *format, va_list ap);
+t_flags	*ft_initialize_flags(void);
+t_chain	*ft_initialize_chain(const char *format, va_list ap);
 void	ft_parser(t_flags *tab, t_chain *chain);
-
-
 
 
 // typedef struct s_print  //esta estructura la vamos  descartar

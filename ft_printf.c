@@ -6,24 +6,37 @@
 /*   By: fnieves- <fnieves-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 11:49:38 by fnieves-          #+#    #+#             */
-/*   Updated: 2022/04/30 19:43:53 by fnieves-         ###   ########.fr       */
+/*   Updated: 2022/05/02 16:07:31 by fnieves-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-void	ft_parser(t_flags *tab, t_chain *chain);
-
 int	ft_printf(const char *format, ...)
 {
 	va_list	ap;
-	t_flags	*tab;
+	t_flags	*flag_counter;
 	t_chain	*chain;
 	
 	va_start(ap, format);
-	ft_initialize_flags(tab);
-	ft_initialize_chain(chain, format, ap);
-	ft_parser(tab, chain);
+	flag_counter = ft_initialize_flags(); //tenemos que tener en cuenta si la funcion retorna Null?
+	chain = ft_initialize_chain(format, ap);
+	ft_parser(flag_counter, chain); //atencion a la defincion. Es posible que tenga que devolver un parametro
+	// atencion si hay que hacer algun free
 	va_end(ap);
-	return (0); //aqu'i hay que devolver chain->char_printed
+	free(flag_counter);
+	free(chain);
+	return (chain->char_printed); //aqu'i hay que devolver chain->char_printed
 }
+
+// int	main(void)
+// {
+// 	const char	*format;
+// 	int	i;
+
+// 	format = "Felipe";
+// 	i = ft_printf(format);
+// 	printf("%i\n", i);
+// 	//printf("%s, %i\n", chain->format, chain->char_printed);
+// 	return (0);
+// }
