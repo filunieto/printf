@@ -6,7 +6,7 @@
 /*   By: fnieves- <fnieves-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 11:49:32 by fnieves-          #+#    #+#             */
-/*   Updated: 2022/04/28 19:53:38 by fnieves-         ###   ########.fr       */
+/*   Updated: 2022/05/02 18:57:59 by fnieves-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,74 +18,44 @@
 # include <stdarg.h>
 # include <unistd.h>
 # include <stdlib.h>
+#include<stdio.h>
 
 
 // las librerias de abajo no son necesarias
-#include <stdio.h>
-#include <string.h>
-#include <unistd.h>
-
-int	ft_printf(const char *str, ...);
 
 
-/*
- ** count_cipher(int n): count cipher number, including sign minus.
- ** If the number is negative, we put the - sign to the left. 
- ** Once we enter the function str_numb,
- ** we will start placing numbers from the right to left. 
- ** So We will never overwrite the - sign if there is one,
- ** as the while condition (n > 0) of strn_number will prevent it.
- ** To handle the limiting case long long -2147483648LL,
- ** we have to convert the int n to unsigned int (we can cast it)
-*/
-static size_t	count_cipher(int n)
+ //recuerda borrarla. solo para testear funciones con printf
+
+
+#define FLAGS1 "cspdiouxXfy%#-+ .*0123456789hLljz"
+#define FLAGS2 "#-+ .*0123456789hLljz"
+#define FLAGS3 "cspdiouxXfy%"
+
+typedef struct s_flags
+{	
+	int		i; //para que?
+	int		len; //para que?
+	
+	int		minus;
+	int		plus;
+	int		space;
+	int		zero;
+	
+	int		hash; //#
+	
+	int		width;  //0-9
+	int		precisiontf;// . 
+	int		precision; //.#
+	int		lenght; // LL HH H L
+}t_flags;
+
+typedef struct s_chain
 {
-	size_t	cipher;
-
-	cipher = 0;
-	if (n <= 0)
-		cipher++;
-	while (n)
-	{
-		n = n / 10;
-		cipher++;
-	}
-	return (cipher);
-}
-
-char	*str_numb(char *number, unsigned int n, int cipher)
-{
-	while (n > 0)
-	{
-		number[cipher--] = n % 10 + '0';
-		n = n / 10;
-	}
-	return (number);
-}
-
-char	*ft_itoa(int n)
-{
-	char	*number_str;
-	int		cipher;
-
-	cipher = count_cipher(n);
-	number_str = (char *)malloc(sizeof(char) * cipher + 1);
-	if (!number_str)
-		return (NULL);
-	number_str[cipher--] = '\0';
-	if (n == 0)
-	{
-		number_str[cipher] = '0';
-		return (number_str);
-	}
-	if (n < 0)
-	{
-		n = -n;
-		number_str[0] = '-';
-	}
-	number_str = str_numb(number_str, (unsigned int)n, cipher);
-	return (number_str);
-}
+	const char	*format;
+	int		char_printed; //caracteres impresos
+	int		pos;	//posicion de la cadena a analizar
+	va_list		ap;
+}t_chain;
 
 
 #endif

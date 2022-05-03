@@ -1,20 +1,13 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdarg.h>
-#include <string.h>
-#include <unistd.h>
+#include "printf.h"
 
-/*
-https://iq.opengenus.org/how-printf-and-scanf-function-works-in-c-internally/#:~:text=Printf%20working%20principle&text=User%20supply%20a%20string%20and,character%20to%20the%20output%20string
-*/
-int print (char *str, ...)
+// seguir a;adiendo los casos , y escribiendo directamente en lugar de usar el buffer
+int print (char * str, ...)
 {
 	va_list ap;
-	int	i = 0;
-	int	j = 0;
-	char buff[100];
-	char tmp[20];
+	int i = 0, j=0;
 	va_start(ap, str);
+	char	c;
+	char *temp;
 
 	while (str && str[i])
 	{
@@ -23,37 +16,52 @@ int print (char *str, ...)
 			i++;
 			if (str[i] == 'c')
 			{
-				buff[j] = (char)va_arg(ap, int);
+				c = (char)va_arg(ap, int);
+				write (1, &c, 1);
+				j++;
+			}
+			else if (str[i] == 'd')
+			{
+
+				temp = ft_itoa(va_arg(ap, int));
+				write (1, temp, 15);
+				free(temp);
 				j++;
 			}
 			else if (str[i] == '%')
 			{
-				buff[j] = '%';
+				write(1, "%%", 1);
 				j++;
 			}
 			else
 			{
-				write(1, "error: invalid conversion specifier\n", 37);
+				j = j + write(1, "error: invalid conversion specifier\n", 37);
+				return (0);
 			}
 		}
-		else
-		{
-			buff[j] = str[i];
-			j++;
-		}
-		i++;
+     	else 
+	    {
+	       	write(1, &str[i], 1);
+	       	j++;
+	    }
+	    i++;
 	}
-	fwrite(buff, j, 1, stdout); 
-	va_end(ap);
-	return (j);
+    va_end(ap);
+    return j;
 }
 
 int	main(void)
 {
 	char	*str;
 	int	i;
+	char m = 'Y';
+	char n = 'W';
+	int number1 = -256;
+	int number2 = -1548;
 
-	str = "mi mamam me mima";
-	print (str);
+	str = "mi mamam me mimo %c porcentaje %% y %c  otro %d y otro %d";
+	i = print (str, m, n, number1, number2);
+	write(1, "\n", 1);
+	printf("%i\n", i);
 	return (0);
 }
