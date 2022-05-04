@@ -6,7 +6,7 @@
 /*   By: fnieves- <fnieves-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 11:49:38 by fnieves-          #+#    #+#             */
-/*   Updated: 2022/05/02 16:07:31 by fnieves-         ###   ########.fr       */
+/*   Updated: 2022/05/04 12:10:18 by fnieves-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,26 +17,32 @@ int	ft_printf(const char *format, ...)
 	va_list	ap;
 	t_flags	*flag_counter;
 	t_chain	*chain;
+	int	total_char_printed;
 	
 	va_start(ap, format);
-	flag_counter = ft_initialize_flags(); //tenemos que tener en cuenta si la funcion retorna Null?
+	//tenemos que tener en cuenta si la funcion retorna Null?
+	flag_counter = ft_initialize_flags();
 	chain = ft_initialize_chain(format, ap);
-	ft_parser(flag_counter, chain); //atencion a la defincion. Es posible que tenga que devolver un parametro
-	// atencion si hay que hacer algun free
+	ft_parser(flag_counter, chain);
 	va_end(ap);
+	//tengo que hacer esto porque har'e un free. otra manera?
+	total_char_printed = chain->char_printed;
 	free(flag_counter);
 	free(chain);
-	return (chain->char_printed); //aqu'i hay que devolver chain->char_printed
+	return (total_char_printed);
 }
 
-// int	main(void)
-// {
-// 	const char	*format;
-// 	int	i;
+int	main(void)
+{
+	const char	*format;
+	int	i;
+	char	c = 'Y';
 
-// 	format = "Felipe";
-// 	i = ft_printf(format);
-// 	printf("%i\n", i);
-// 	//printf("%s, %i\n", chain->format, chain->char_printed);
-// 	return (0);
-// }
+	format = "Felipe: %c %% y second time %c\n";
+	i = ft_printf(format, c, c);
+	printf("numero de caract %i\n", i);
+	i = printf(format, c, c);
+	printf("numero de caract %i\n", i);
+	//printf("%s, %i\n", chain->format, chain->char_printed);
+	return (0);
+}

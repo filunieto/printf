@@ -6,17 +6,19 @@
 /*   By: fnieves- <fnieves-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 11:49:32 by fnieves-          #+#    #+#             */
-/*   Updated: 2022/05/03 13:02:56 by fnieves-         ###   ########.fr       */
+/*   Updated: 2022/05/04 11:25:38 by fnieves-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # ifndef __PRINTF_H
 # define __PRINTF_H
 
-#include<stdio.h> //recuerda borrarla. solo para testear funciones con printf
+#include <stdio.h> //recuerda borrarla. solo para testear funciones con printf
 
+#include <string.h>
 # include <stdarg.h>
-# include "../../libft proyecto/libft/libft.h"
+#include <unistd.h>
+#include <stdlib.h>
 
 #define FLAGS_GLOBAL "cspdiouxXf%#-+ .*0123456789hLljz"
 #define FLAGS_CONVERSION "cspdiouxXf%"
@@ -54,6 +56,8 @@ int		ft_printf(const char *str, ...);
 t_flags	*ft_initialize_flags(void);
 t_chain	*ft_initialize_chain(const char *format, va_list ap);
 void	ft_parser(t_flags *tab, t_chain *chain);
+void	ft_print_flag(t_flags *flags, t_chain *chain);
+void	ft_print_char(t_flags *flags, t_chain *chain);
 
 
 // typedef struct s_print  //esta estructura la vamos  descartar
