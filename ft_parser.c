@@ -6,7 +6,7 @@
 /*   By: fnieves- <fnieves-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 19:45:02 by fnieves-          #+#    #+#             */
-/*   Updated: 2022/05/04 12:32:58 by fnieves-         ###   ########.fr       */
+/*   Updated: 2022/05/05 12:38:18 by fnieves-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,15 @@ void	ft_parser(t_flags *flags, t_chain *chain)
 	{
 		if (chain->format[chain->pos] != '%')
 			chain->char_printed += write(1, &chain->format[chain->pos], 1); //si no encuentra % , imprime nomral 
-		else if (strchr(FLAGS_GLOBAL, chain->format[chain->pos + 1])) //impliciatmente ha encontrado % y analizamos la siguiente posicion si peretence a las varaibles generales
+		else if (ft_strchr(FLAGS_GLOBAL, chain->format[chain->pos + 1])) //impliciatmente ha encontrado % y analizamos la siguiente posicion si peretence a las varaibles generales
 		{
 			chain->pos++; //como la posicion posterior a % , pertenecia a las variables , avanzamos la posicion y estamos en una flag del grupo general
-			// cambiar todos los strchr por ft_strchr y actualizar la libreria
-			while (strchr(FLAGS_PRECISION, chain->format[chain->pos]))
+			while (ft_strchr(FLAGS_PRECISION, chain->format[chain->pos]))
 			{
 				//crear funcion que actaulaiza la estructura de flags , incrementado los flags
 				chain->pos++;
 			}
-			if (strchr(FLAGS_CONVERSION, chain->format[chain->pos]))
+			if (ft_strchr(FLAGS_CONVERSION, chain->format[chain->pos]))
 			{
 				//crear funcion que imprimira de una manera especial segun encuentre cspdiouxX%% (tendra como inputs el contador de flags y )
 				ft_print_flag(flags, chain);

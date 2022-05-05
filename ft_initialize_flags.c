@@ -6,7 +6,7 @@
 /*   By: fnieves- <fnieves-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 18:51:09 by fnieves-          #+#    #+#             */
-/*   Updated: 2022/05/02 15:12:07 by fnieves-         ###   ########.fr       */
+/*   Updated: 2022/05/05 12:40:33 by fnieves-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ t_flags	*ft_initialize_flags(void)
 	flag_counter = (t_flags *)malloc(sizeof(t_flags));
 	if (!flag_counter)
 		return (NULL);
-	flag_counter->len = 0;
 	flag_counter->minus = 0;
 	flag_counter->plus = 0;
 	flag_counter->space = 0;

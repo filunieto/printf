@@ -5,8 +5,11 @@ SRCS 			= 	ft_initialize_chain.c \
 					ft_print_flag.c \
 					ft_printf.c \
 
-OBJS			= $(SRCS:.c=.o)
+LIBFTSRCS 		= 	libft/ft_strchr.c
 
+
+OBJS			= $(SRCS:.c=.o)
+LIBFTOBJ 		= $(LIBFTSRCS:.c=.o)
 
 CC				= cc
 RM				= rm -f
@@ -16,11 +19,14 @@ NAME			= libftprintf.a
 
 all:			$(NAME)
 
-$(NAME):		$(OBJS) printf.h
-				ar -rcs $(NAME) $(OBJS)
+$(NAME):		$(OBJS) $(LIBFTOBJ) printf.h
+				ar -rcs $(NAME) $(OBJS) $(LIBFTOBJ)
+
+%.o: %.c ft_printf.h
+	${CC} ${CFLAGS} -c $< -o $@ 
 
 clean:
-				$(RM) $(OBJS)
+				$(RM) $(OBJS) $(LIBFTOBJ)
 
 fclean:			clean
 				$(RM) $(NAME)

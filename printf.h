@@ -6,7 +6,7 @@
 /*   By: fnieves- <fnieves-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 11:49:32 by fnieves-          #+#    #+#             */
-/*   Updated: 2022/05/04 17:37:35 by fnieves-         ###   ########.fr       */
+/*   Updated: 2022/05/05 12:39:23 by fnieves-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,16 @@
 
 #include <stdio.h> //recuerda borrarla. solo para testear funciones con printf
 
-#include <string.h>
+# include <string.h>
 # include <stdarg.h>
-#include <unistd.h>
-#include <stdlib.h>
+# include <unistd.h>
+# include <stdlib.h>
+# include "libft/libft.h"
 
 //http://www.cplusplus.com/reference/cstdio/printf/
-#define FLAGS_GLOBAL "cspdiouxXf%#-+ .*0123456789hLljz"
-#define FLAGS_CONVERSION "cspdiouxXf%"
-#define FLAGS_PRECISION "#-+ .*0123456789hLljz"
+# define FLAGS_GLOBAL "cspdiouxXf%#-+ .*0123456789hLljz"
+# define FLAGS_CONVERSION "cspdiouxXf%"
+# define FLAGS_PRECISION "#-+ .*0123456789hLljz"
 
 
 typedef struct s_flags
