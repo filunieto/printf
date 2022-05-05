@@ -6,7 +6,7 @@
 /*   By: fnieves- <fnieves-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 19:45:02 by fnieves-          #+#    #+#             */
-/*   Updated: 2022/05/04 11:30:11 by fnieves-         ###   ########.fr       */
+/*   Updated: 2022/05/04 12:32:58 by fnieves-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	ft_parser(t_flags *flags, t_chain *chain)
 		else if (strchr(FLAGS_GLOBAL, chain->format[chain->pos + 1])) //impliciatmente ha encontrado % y analizamos la siguiente posicion si peretence a las varaibles generales
 		{
 			chain->pos++; //como la posicion posterior a % , pertenecia a las variables , avanzamos la posicion y estamos en una flag del grupo general
-			// cambiar todos los strchr
+			// cambiar todos los strchr por ft_strchr y actualizar la libreria
 			while (strchr(FLAGS_PRECISION, chain->format[chain->pos]))
 			{
 				//crear funcion que actaulaiza la estructura de flags , incrementado los flags

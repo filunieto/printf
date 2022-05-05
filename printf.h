@@ -6,7 +6,7 @@
 /*   By: fnieves- <fnieves-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 11:49:32 by fnieves-          #+#    #+#             */
-/*   Updated: 2022/05/04 11:25:38 by fnieves-         ###   ########.fr       */
+/*   Updated: 2022/05/04 17:37:35 by fnieves-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,27 +20,30 @@
 #include <unistd.h>
 #include <stdlib.h>
 
+//http://www.cplusplus.com/reference/cstdio/printf/
 #define FLAGS_GLOBAL "cspdiouxXf%#-+ .*0123456789hLljz"
 #define FLAGS_CONVERSION "cspdiouxXf%"
 #define FLAGS_PRECISION "#-+ .*0123456789hLljz"
 
 
 typedef struct s_flags
-{	
-	int		i; //para que?
-	int		len; //para que?
+{		
+	char	type_conversion; //cspdiouxXf%
+	int		minus; //left justify if it finds a - char
+	int		plus; //forces to write a + sign (- is by default)
+	int		space; // Print a space before a positive value not printed with the + flag.
+	int		zero; //Left-pads the number with zeroes (0) instead of spaces when padding is specified : printf ("Preceding with zeros: %010d \n", 1977); --> Preceding with zeros: 0000001977
+	int		hash; //# with o, x or X specifiers the value is preceeded with 0, 0x or 0X respectively for values different than zero.
 	
-	char	type_conversion;
-	int		minus;
-	int		plus;
-	int		space;
-	int		zero;
-	int		hash; //#
-	
-	int		width;  //0-9
-	int		precisiontf;// . 
-	int		precision; //.#
-	int		lenght; // LL HH H L
+	int		width;  //0-9 // Minimum number of characters to be printed. If the value to be printed is shorter than this number, the result is padded with blank spaces. 
+			// The value is not truncated even if the result is larger.
+	int		precisiontf; // ?? (.) For integer specifiers (d, i, o, u, x, X): precision specifies the minimum number of digits to be written. 
+			// If the value to be written is shorter than this number, the result is padded with leading zeros. The value is not truncated even if the result is longer. 
+			// A precision of 0 means that no character is written for the value 0.
+			// For s: this is the maximum number of characters to be printed. By default all characters are printed until the ending null character is encountered.
+			// If the period is specified without an explicit value for precision, 0 is assumed.
+	int		precision; //??  (.#)
+	int		lenght; //??  LL HH H L
 }t_flags;
 
 typedef struct s_chain
@@ -58,21 +61,5 @@ t_chain	*ft_initialize_chain(const char *format, va_list ap);
 void	ft_parser(t_flags *tab, t_chain *chain);
 void	ft_print_flag(t_flags *flags, t_chain *chain);
 void	ft_print_char(t_flags *flags, t_chain *chain);
-
-
-// typedef struct s_print  //esta estructura la vamos  descartar
-// {
-// 	va_list	args;
-// 	int		wdt; //anchura
-// 	int		prc; //precision
-// 	int		zero;
-// 	int		pnt;
-// 	int		dash;
-// 	int		tl;
-// 	int		sign;
-// 	int		is_zero;
-// 	int		perc;
-// 	int		sp;
-// }t_print;
 
 #endif

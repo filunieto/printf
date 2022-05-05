@@ -4,13 +4,14 @@
 #define PALABRA "cdi"
 int main(void)
 {
-	int	i;
-	int	number;
+	int	i = 0;
+	// int	number;
 
-	number = 255;
-	i = printf(" string : %s\n charcter: %c\n numero int: %i\n numero d: %d\n pointer: %p\n ", "PALABRA", 'd',number,  number, &number);
-	i += printf(" octal : %o\n unsigned: %u\n hexadecimal: %x\n HEXADECIMAL: %X \n ", number, number, number, number);
-	i += printf(" float : %f\n", 2.8);
-	printf("numero total de caracetres impresos %i\n", i);
+	// number = 255;
+	// i = printf(" string : %s\n charcter: %c\n numero int: %i\n numero d: %d\n pointer: %p\n ", "PALABRA", 'd',number,  number, &number);
+	// i += printf(" octal : %o\n unsigned: %u\n hexadecimal: %x\n HEXADECIMAL: %X \n ", number, number, number, number);
+	// i += printf(" float : %f\n", 2.8);
+	i = printf("%-13d", 123456789);
+	printf("\nnumero total de caracetres impresos %i\n", i);
 	return (0);
 }
