@@ -4,12 +4,24 @@ SRCS 			= 	ft_initialize_chain.c \
 					ft_print_char.c \
 					ft_print_flag.c \
 					ft_printf.c \
+					ft_print_int.c \
+					ft_print_str.c \
 
-LIBFTSRCS 		= 	libft/ft_strchr.c
 
+# LIBFTFILES		=	strchr
+# LIBFTSRCS 		= $(addprefix libft/ft_,$(addsuffix .c, $(LIBFTFILES)))  : in the case I have "strchr"
+
+LIBFTFILES		=	ft_strchr.c \
+					ft_itoa.c \
+					ft_strlen.c \
+					ft_strdup.c \
+
+
+LIBFTSRCS		= $(addprefix libft/,$(LIBFTFILES))
 
 OBJS			= $(SRCS:.c=.o)
 LIBFTOBJ 		= $(LIBFTSRCS:.c=.o)
+HEADER			= ft_printf.h
 
 CC				= cc
 RM				= rm -f
@@ -22,7 +34,7 @@ all:			$(NAME)
 $(NAME):		$(OBJS) $(LIBFTOBJ) printf.h
 				ar -rcs $(NAME) $(OBJS) $(LIBFTOBJ)
 
-%.o: %.c ft_printf.h
+%.o: %.c $(HEADER)
 	${CC} ${CFLAGS} -c $< -o $@ 
 
 clean:

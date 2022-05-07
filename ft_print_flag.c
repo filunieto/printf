@@ -6,7 +6,7 @@
 /*   By: fnieves- <fnieves-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 18:20:26 by fnieves-          #+#    #+#             */
-/*   Updated: 2022/05/05 12:41:42 by fnieves-         ###   ########.fr       */
+/*   Updated: 2022/05/06 17:24:26 by fnieves-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,16 @@ void	ft_print_flag(t_flags *flags, t_chain *chain)
 		ft_print_char(flags, chain);
 	else if (flags->type_conversion == 'i' || flags->type_conversion == 'd')
 	{
-		//ft_print_int(flags, chain);
+		ft_print_int(flags, chain);
 	}
 	else if (flags->type_conversion == 's')
 	{
-		//ft_print_str(flags, chain);
+		ft_print_str(flags, chain);
 	}
 	else if (flags->type_conversion == 'x' || 
 		flags->type_conversion == 'X' || flags->type_conversion == 'u')
 	{
-		//ft_print_nbr(flags, chain);
+		ft_print_hex(flags, chain);
 	}
 	else // if we find flag P: print the pointer
 	{

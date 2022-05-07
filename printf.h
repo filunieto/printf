@@ -6,7 +6,7 @@
 /*   By: fnieves- <fnieves-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 11:49:32 by fnieves-          #+#    #+#             */
-/*   Updated: 2022/05/05 12:39:23 by fnieves-         ###   ########.fr       */
+/*   Updated: 2022/05/06 17:27:56 by fnieves-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,15 @@
 # include <stdlib.h>
 # include "libft/libft.h"
 
-//http://www.cplusplus.com/reference/cstdio/printf/
-# define FLAGS_GLOBAL "cspdiouxXf%#-+ .*0123456789hLljz"
-# define FLAGS_CONVERSION "cspdiouxXf%"
+//http://www.cplusplus.com/reference/cstdio/printf/  %[$][flags][width][.precision][length modifier]conversion
+# define FLAGS_GLOBAL "cspdiuxX%#-+ .*0123456789hLljz"
+# define FLAGS_CONVERSION "cspdiuxX%"
 # define FLAGS_PRECISION "#-+ .*0123456789hLljz"
 
 
 typedef struct s_flags
 {		
-	char	type_conversion; //cspdiouxXf%
+	char	type_conversion; //cspdiuxX%
 	int		minus; //left justify if it finds a - char
 	int		plus; //forces to write a + sign (- is by default)
 	int		space; // Print a space before a positive value not printed with the + flag.
@@ -44,7 +44,9 @@ typedef struct s_flags
 			// For s: this is the maximum number of characters to be printed. By default all characters are printed until the ending null character is encountered.
 			// If the period is specified without an explicit value for precision, 0 is assumed.
 	int		precision; //??  (.#)
-	int		lenght; //??  LL HH H L
+	int		lenght; //??  L(long double)  l(long) h(short) z j
+	
+	char	*str_to_print;
 }t_flags;
 
 typedef struct s_chain
@@ -62,5 +64,9 @@ t_chain	*ft_initialize_chain(const char *format, va_list ap);
 void	ft_parser(t_flags *tab, t_chain *chain);
 void	ft_print_flag(t_flags *flags, t_chain *chain);
 void	ft_print_char(t_flags *flags, t_chain *chain);
+void	ft_print_int(t_flags *flags, t_chain *chain);
+void	ft_print_str(t_flags *flags, t_chain *chain);
+void	ft_print_hex(t_flags *flags, t_chain *chain);
+
 
 #endif

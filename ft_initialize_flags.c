@@ -6,7 +6,7 @@
 /*   By: fnieves- <fnieves-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 18:51:09 by fnieves-          #+#    #+#             */
-/*   Updated: 2022/05/05 12:40:33 by fnieves-         ###   ########.fr       */
+/*   Updated: 2022/05/06 11:22:34 by fnieves-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ t_flags	*ft_initialize_flags(void)
 	flag_counter->precisiontf = 0;
 	flag_counter->precision = 0;
 	flag_counter->lenght = 0;
+	flag_counter->str_to_print = "nada";
 	return (flag_counter);
 }
 

@@ -23,5 +23,10 @@ typedef struct s_list
 }					t_list;
 
 char				*ft_strchr(const char *s, int c);
+char				*ft_itoa(int n);
+size_t				count_cipher(int n); //esta funcion no esta declarada como static y tampoco esta en su archivo propio , atencion
+int					ft_strlen(const char *str);
+char				*ft_strdup(const char *s);
+
 
 #endif

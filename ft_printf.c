@@ -6,7 +6,7 @@
 /*   By: fnieves- <fnieves-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 11:49:38 by fnieves-          #+#    #+#             */
-/*   Updated: 2022/05/04 12:40:15 by fnieves-         ###   ########.fr       */
+/*   Updated: 2022/05/06 13:08:58 by fnieves-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,14 @@ int	main(void)
 	const char	*format;
 	int	i;
 	char	c = 'Y';
+	int	number = -45;
+	char	*cadena = "Felipe";
 
-	format = "Felipe: %c %% y second time %c\n";
-	i = ft_printf(format, c, c);
-	printf("numero de caract %i\n", i);
-	i = printf(format, c, c);
+	format = "\nFelipe: %c %% y second time %c y el numero %i y la cadena %s\n";
+	i = ft_printf(format, c, c, number, cadena);
+	printf("numero de caract %i\n\n", i);
+	printf("Funcion printf abajo\n");
+	i = printf(format, c, c, number, cadena);
 	printf("numero de caract %i\n", i);
 	//printf("%s, %i\n", chain->format, chain->char_printed);
 	return (0);
