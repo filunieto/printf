@@ -1,5 +1,4 @@
-SRCS 			= 	ft_initialize_chain.c \
-					ft_initialize_flags.c \
+SRCS 			= 	ft_initialize_struct.c \
 					ft_parser.c \
 					ft_print_char.c \
 					ft_print_flag.c \
@@ -34,7 +33,7 @@ NAME			= libftprintf.a
 
 all:			$(NAME)
 
-$(NAME):		$(OBJS) $(LIBFTOBJ) printf.h
+$(NAME):		$(OBJS) $(LIBFTOBJ) ft_printf.h
 				ar -rcs $(NAME) $(OBJS) $(LIBFTOBJ)
 
 %.o: %.c $(HEADER)
@@ -47,5 +46,7 @@ fclean:			clean
 				$(RM) $(NAME)
 
 re:				fclean all
+
+bonus:			re
 
 .PHONY:			all clean fclean re bonus

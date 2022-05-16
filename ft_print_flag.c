@@ -6,11 +6,11 @@
 /*   By: fnieves- <fnieves-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 18:20:26 by fnieves-          #+#    #+#             */
-/*   Updated: 2022/05/16 12:26:29 by fnieves-         ###   ########.fr       */
+/*   Updated: 2022/05/16 16:39:52 by fnieves-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 /*
  * Identificamos el modo de conversion y lo almacenamos en la estructura
 */

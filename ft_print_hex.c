@@ -6,11 +6,11 @@
 /*   By: fnieves- <fnieves-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 17:26:32 by fnieves-          #+#    #+#             */
-/*   Updated: 2022/05/16 11:00:41 by fnieves-         ###   ########.fr       */
+/*   Updated: 2022/05/16 21:25:14 by fnieves-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "printf.h"
+# include "ft_printf.h"
 
 static char	ft_fix_char_base(char modus, unsigned long int nbr)
 {
@@ -18,20 +18,19 @@ static char	ft_fix_char_base(char modus, unsigned long int nbr)
 	//atencion si habria que a;adir los modus o y u o no es necesario
 	if (nbr < 10)
 		c = nbr + '0';
-	else if (modus == 'x')
-		c = nbr - 10 + 'a';
-	else
+	else if (modus == 'X')
 		c = nbr - 10 + 'A';
+	else
+		c = nbr - 10 + 'a';
 	return (c);
 }
-
 //void	ft_itoa_base(char modus, unsigned long int base, unsigned long int nbr) 
 //aqui debemos pasar estos parametros a traves de struct, 
 //hacer test de numero  1000 con base 10 a  ver si funciona
 void	ft_print_hex(t_flags *flags, t_chain *chain, unsigned long int nbr)
 {
 	char	c;
-	
+
 	if (nbr < flags->base)
 	{
 		c = ft_fix_char_base(flags->type_conversion , nbr);

@@ -6,7 +6,7 @@
 /*   By: fnieves- <fnieves-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 16:30:08 by fnieves           #+#    #+#             */
-/*   Updated: 2022/05/06 12:27:55 by fnieves-         ###   ########.fr       */
+/*   Updated: 2022/05/16 19:08:50 by fnieves-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,9 @@ char	*ft_strdup(const char *s)
 	char	*dest;
 	int		leng_s;
 	int		i;
-
+	
+	// if (!s)
+	// 	return ("null");
 	leng_s = ft_strlen((const char *)s);
 	dest = (char *)malloc(sizeof(char) * (leng_s +1));
 	if (!dest)

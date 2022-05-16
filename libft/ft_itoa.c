@@ -6,11 +6,12 @@
 /*   By: fnieves- <fnieves-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 11:17:40 by fnieves           #+#    #+#             */
-/*   Updated: 2022/05/06 11:54:09 by fnieves-         ###   ########.fr       */
+/*   Updated: 2022/05/16 19:28:18 by fnieves-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include<stdio.h>
 /*
  ** count_cipher(int n): count cipher number, including sign minus.
  ** If the number is negative, we put the - sign to the left. 

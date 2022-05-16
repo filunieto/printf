@@ -6,11 +6,11 @@
 /*   By: fnieves- <fnieves-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 19:45:02 by fnieves-          #+#    #+#             */
-/*   Updated: 2022/05/16 11:55:18 by fnieves-         ###   ########.fr       */
+/*   Updated: 2022/05/16 21:10:08 by fnieves-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 /*
  * We start running through the string. if it does not find '%; it prints normal 
  * and increments the counter. Otherwise, it starts parsing.
@@ -38,7 +38,8 @@ void	ft_parser(t_flags *flags, t_chain *chain)
 				ft_print_flag(flags, chain);
 			}
 			//volvemos a inicializar a 0 el contador de flags y buscamos el siguiente % o seguimos imprimiendo caracteres normal
-			flags = ft_initialize_flags();
+			//free(flags);
+			ft_initialize_flags(flags); // ccambiar esta funcion y no usar malloc. Ya est'a cambiada
 		}
 		chain->pos++;
 	}

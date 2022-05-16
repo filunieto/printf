@@ -1,36 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_initialize_flags.c                              :+:      :+:    :+:   */
+/*   ft_initialize_struct.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fnieves- <fnieves-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 18:51:09 by fnieves-          #+#    #+#             */
-/*   Updated: 2022/05/16 00:06:50 by fnieves-         ###   ########.fr       */
+/*   Updated: 2022/05/16 20:00:19 by fnieves-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 /*
- * Initialize the flags to 0 to start to 
+ * Initialize the structure to start to 
  * work with.
 */
-t_flags	*ft_initialize_flags(void)
+t_chain	*ft_initialize_chain(const char *format, va_list ap)
 {
-	t_flags	*flag_counter;
+	t_chain	*chain;
 	
-	flag_counter = (t_flags *)malloc(sizeof(t_flags));
-	if (!flag_counter)
+	chain = (t_chain *)malloc(sizeof(t_chain));
+	if (!chain)
 		return (NULL);
+	chain->format = format;
+	chain->char_printed = 0;
+	chain->pos = 0;
+	va_copy(chain->ap, ap);
+	va_end(ap);
+	return (chain);
+}
+
+void	ft_initialize_flags(t_flags *flag_counter)
+{
 	flag_counter->minus = 0;
 	flag_counter->plus = 0;
 	flag_counter->space = 0;
-	flag_counter->zero = 0;
+	flag_counter->zero_left_pad = 0;
 	flag_counter->hash = 0;
 	flag_counter->width = 0;
 	flag_counter->precisiontf = 0;
 	flag_counter->precision = 0;
 	flag_counter->lenght = 0;
 	flag_counter->base = 10;
-	return (flag_counter);
 }

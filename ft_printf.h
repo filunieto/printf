@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf.h                                           :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fnieves- <fnieves-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 11:49:32 by fnieves-          #+#    #+#             */
-/*   Updated: 2022/05/16 12:32:34 by fnieves-         ###   ########.fr       */
+/*   Updated: 2022/05/16 20:00:59 by fnieves-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# ifndef __PRINTF_H
-# define __PRINTF_H
+# ifndef __FT_PRINTF_H
+# define __FT_PRINTF_H
 
 #include <stdio.h> //recuerda borrarla. solo para testear funciones con printf
 
@@ -29,12 +29,18 @@
 
 typedef struct s_flags
 {		
-	char	type_conversion; //cspdiuxX%
+	//ok
+	char	type_conversion; //cspdiuxX% : ok
+	//ok
 	int		minus; //left justify if it finds a - char
-	int		plus; //forces to write a + sign (- is by default)
+	//ok
+	int		plus; //forces to write a + sign (- is by default): just in i and d values
+	//ok
 	int		space; // Print a space before a positive value not printed with the + flag.
-	int		zero; //Left-pads the number with zeroes (0) instead of spaces when padding is specified : printf ("Preceding with zeros: %010d \n", 1977); --> Preceding with zeros: 0000001977
-	int		hash; //# with o, x or X specifiers the value is preceeded with 0, 0x or 0X respectively for values different than zero.
+	//ok
+	int		zero_left_pad; //Left-pads the number with zeroes (0) instead of spaces when padding is specified : printf ("Preceding with zeros: %010d \n", 1977); --> Preceding with zeros: 0000001977
+	//ok
+	int		hash; //# with o, x or X specifiers the value is preceeded with 0, 0x or 0X respectively for values different than zero. : OK
 	
 	int		width;  //0-9 // Minimum number of characters to be printed. If the value to be printed is shorter than this number, the result is padded with blank spaces. 
 			// The value is not truncated even if the result is larger.
@@ -58,7 +64,7 @@ typedef struct s_chain
 
 
 int		ft_printf(const char *str, ...);
-t_flags	*ft_initialize_flags(void);
+void	ft_initialize_flags(t_flags *flag_counter);
 t_chain	*ft_initialize_chain(const char *format, va_list ap);
 void	ft_parser(t_flags *tab, t_chain *chain);
 void	ft_print_flag(t_flags *flags, t_chain *chain);
@@ -68,6 +74,8 @@ void	ft_print_str(t_flags *flags, t_chain *chain);
 void	ft_print_hex(t_flags *flags, t_chain *chain, unsigned long int nbr);
 void	ft_update_flag_conversor(t_flags *flags, t_chain *chain);
 void	ft_update_flag_label(t_flags *flags, t_chain *chain);
+void	zero_left_padding(t_flags *flags, t_chain *chain);
+
 
 
 
