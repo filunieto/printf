@@ -16,11 +16,6 @@
 # include <unistd.h>
 # include <stdlib.h>
 
-typedef struct s_list
-{
-	void			*content;
-	struct s_list	*next;
-}					t_list;
 
 char				*ft_strchr(const char *s, int c);
 char				*ft_itoa(int n);

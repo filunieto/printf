@@ -6,7 +6,7 @@
 /*   By: fnieves- <fnieves-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 18:51:09 by fnieves-          #+#    #+#             */
-/*   Updated: 2022/05/06 11:22:34 by fnieves-         ###   ########.fr       */
+/*   Updated: 2022/05/16 00:06:50 by fnieves-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,17 +31,6 @@ t_flags	*ft_initialize_flags(void)
 	flag_counter->precisiontf = 0;
 	flag_counter->precision = 0;
 	flag_counter->lenght = 0;
-	flag_counter->str_to_print = "nada";
+	flag_counter->base = 10;
 	return (flag_counter);
 }
-
-// int	main(void)
-// {
-// 	t_flags	*flag_counter;
-	
-// 	//flag_counter = 0; //probar con o sin
-// 	flag_counter = ft_initialize_flags();
-// 	printf("%i, %i\n", flag_counter->len, flag_counter->width);
-// 	free(flag_counter);
-// 	return (0);
-// }

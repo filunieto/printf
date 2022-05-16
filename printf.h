@@ -6,7 +6,7 @@
 /*   By: fnieves- <fnieves-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 11:49:32 by fnieves-          #+#    #+#             */
-/*   Updated: 2022/05/06 17:27:56 by fnieves-         ###   ########.fr       */
+/*   Updated: 2022/05/16 12:32:34 by fnieves-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 # include "libft/libft.h"
 
 //http://www.cplusplus.com/reference/cstdio/printf/  %[$][flags][width][.precision][length modifier]conversion
-# define FLAGS_GLOBAL "cspdiuxX%#-+ .*0123456789hLljz"
-# define FLAGS_CONVERSION "cspdiuxX%"
+# define FLAGS_GLOBAL "cspdiuoxX%#-+ .*0123456789hLljz"
+# define FLAGS_CONVERSION "cspdiuoxX%"
 # define FLAGS_PRECISION "#-+ .*0123456789hLljz"
 
 
@@ -45,8 +45,7 @@ typedef struct s_flags
 			// If the period is specified without an explicit value for precision, 0 is assumed.
 	int		precision; //??  (.#)
 	int		lenght; //??  L(long double)  l(long) h(short) z j
-	
-	char	*str_to_print;
+	unsigned long int 		base; //base para la conversion 10, 8 o 16, el tipo de datos es para quue concuerde despues con las fun iones en las comparaciones
 }t_flags;
 
 typedef struct s_chain
@@ -66,7 +65,10 @@ void	ft_print_flag(t_flags *flags, t_chain *chain);
 void	ft_print_char(t_flags *flags, t_chain *chain);
 void	ft_print_int(t_flags *flags, t_chain *chain);
 void	ft_print_str(t_flags *flags, t_chain *chain);
-void	ft_print_hex(t_flags *flags, t_chain *chain);
+void	ft_print_hex(t_flags *flags, t_chain *chain, unsigned long int nbr);
+void	ft_update_flag_conversor(t_flags *flags, t_chain *chain);
+void	ft_update_flag_label(t_flags *flags, t_chain *chain);
+
 
 
 #endif

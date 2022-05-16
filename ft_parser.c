@@ -6,7 +6,7 @@
 /*   By: fnieves- <fnieves-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 19:45:02 by fnieves-          #+#    #+#             */
-/*   Updated: 2022/05/05 12:38:18 by fnieves-         ###   ########.fr       */
+/*   Updated: 2022/05/16 11:55:18 by fnieves-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
  * We start running through the string. if it does not find '%; it prints normal 
  * and increments the counter. Otherwise, it starts parsing.
  * if it finds a FLAG1 in pos + 1, keep with parsing till he finds FLAGS3
- *
  *
 */
 void	ft_parser(t_flags *flags, t_chain *chain)
@@ -29,7 +28,8 @@ void	ft_parser(t_flags *flags, t_chain *chain)
 			chain->pos++; //como la posicion posterior a % , pertenecia a las variables , avanzamos la posicion y estamos en una flag del grupo general
 			while (ft_strchr(FLAGS_PRECISION, chain->format[chain->pos]))
 			{
-				//crear funcion que actaulaiza la estructura de flags , incrementado los flags
+				//crear funcion que actaulaiza la estructura de flags , incrementado los flags solo para flags simples
+				ft_update_flag_label(flags, chain);
 				chain->pos++;
 			}
 			if (ft_strchr(FLAGS_CONVERSION, chain->format[chain->pos]))

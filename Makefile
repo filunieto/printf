@@ -6,6 +6,8 @@ SRCS 			= 	ft_initialize_chain.c \
 					ft_printf.c \
 					ft_print_int.c \
 					ft_print_str.c \
+					ft_print_hex.c \
+					ft_update_flag.c \
 
 
 # LIBFTFILES		=	strchr
@@ -15,6 +17,7 @@ LIBFTFILES		=	ft_strchr.c \
 					ft_itoa.c \
 					ft_strlen.c \
 					ft_strdup.c \
+					# ft_itoa_base.c \
 
 
 LIBFTSRCS		= $(addprefix libft/,$(LIBFTFILES))
