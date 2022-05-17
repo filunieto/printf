@@ -14,9 +14,9 @@ int main(void)
 	// i = printf(" string : %s\n charcter: %c\n numero int: %i\n numero d: %d\n pointer: %p\n ", "PALABRA", 'd',number,  number, &number);
 	//i += printf(" octal : %o\n unsigned: %u\n hexadecimal: %#x\n HEXADECIMAL: %#X \n ", number, number, number, number);
 	//i += printf(" float : %f\n", 2.8);
-	i = printf("%010i", 123456789);
+	i = printf("% 15d", 123456789);
 	printf("\nnumero total de caracetres impresos %i\n", i);
-	i = printf("%-10s", PALABRA);
+	i = printf("%10s", PALABRA);
 	printf("\nnumero total de caracetres impresos %i\n", i);
 	i = printf("%10c", caracter);
 	printf("\nnumero total de caracetres impresos %i\n", i);

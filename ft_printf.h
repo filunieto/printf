@@ -6,7 +6,7 @@
 /*   By: fnieves- <fnieves-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 11:49:32 by fnieves-          #+#    #+#             */
-/*   Updated: 2022/05/16 20:00:59 by fnieves-         ###   ########.fr       */
+/*   Updated: 2022/05/17 10:07:58 by fnieves-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ typedef struct s_flags
 	//ok
 	char	type_conversion; //cspdiuxX% : ok
 	//ok
-	int		minus; //left justify if it finds a - char
+	int		minus_left_pad; //left justify if it finds a - char
 	//ok
 	int		plus; //forces to write a + sign (- is by default): just in i and d values
 	//ok

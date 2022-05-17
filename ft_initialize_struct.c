@@ -6,7 +6,7 @@
 /*   By: fnieves- <fnieves-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 18:51:09 by fnieves-          #+#    #+#             */
-/*   Updated: 2022/05/16 20:00:19 by fnieves-         ###   ########.fr       */
+/*   Updated: 2022/05/17 10:06:16 by fnieves-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ t_chain	*ft_initialize_chain(const char *format, va_list ap)
 
 void	ft_initialize_flags(t_flags *flag_counter)
 {
-	flag_counter->minus = 0;
+	flag_counter->minus_left_pad = 0;
 	flag_counter->plus = 0;
 	flag_counter->space = 0;
 	flag_counter->zero_left_pad = 0;

@@ -22,6 +22,9 @@ char				*ft_itoa(int n);
 size_t				count_cipher(int n); //esta funcion no esta declarada como static y tampoco esta en su archivo propio , atencion
 int					ft_strlen(const char *str);
 char				*ft_strdup(const char *s);
+int					ft_isdigit(int c);
+int					ft_power(int base, size_t exp);
+
 
 
 #endif

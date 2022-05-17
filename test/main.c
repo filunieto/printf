@@ -6,7 +6,7 @@
 /*   By: fnieves- <fnieves-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 17:02:04 by fnieves-          #+#    #+#             */
-/*   Updated: 2022/05/16 21:21:22 by fnieves-         ###   ########.fr       */
+/*   Updated: 2022/05/17 19:44:18 by fnieves-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,17 @@ int	main(void)
 	const char	*format;
 	int	i;
 	//char	c = 'a';
-	int	number = 9;
+	unsigned int	number = 324;
 	//unsigned int n_problem = 4294967295;
 	//char	*cadena = "Felipe";
 
-	format = "\nProbamos unsig: %p\n";
-	i = ft_printf(format, &number );
-	printf("numero de caract %i\n\n", i);
-	printf("Funcion printf abajo\n");
+	format = "%#012x";
+	i = ft_printf(format, &number);
+	printf("\nnumero de caract ft %i\n", i);
+	printf("----Funcion printf abajo----\n");
 	i = printf(format, &number);
-	printf("numero de caract %i\n", i);
+	printf("\nnumero de caract: %i", i);
+	printf("\n----end----\n");
 	//printf("%s, %i\n", chain->format, chain->char_printed);
 	//system("leaks a.out");
 	return (0);

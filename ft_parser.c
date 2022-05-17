@@ -6,7 +6,7 @@
 /*   By: fnieves- <fnieves-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 19:45:02 by fnieves-          #+#    #+#             */
-/*   Updated: 2022/05/16 21:10:08 by fnieves-         ###   ########.fr       */
+/*   Updated: 2022/05/17 09:48:06 by fnieves-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ void	ft_parser(t_flags *flags, t_chain *chain)
 				ft_print_flag(flags, chain);
 			}
 			//volvemos a inicializar a 0 el contador de flags y buscamos el siguiente % o seguimos imprimiendo caracteres normal
-			//free(flags);
-			ft_initialize_flags(flags); // ccambiar esta funcion y no usar malloc. Ya est'a cambiada
+			//free(flags); Añadî esta parte en su momento pero daba bastantes problemas
+			ft_initialize_flags(flags); // Cambié la funcion a void de output
 		}
 		chain->pos++;
 	}

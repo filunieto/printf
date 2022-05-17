@@ -16,7 +16,8 @@ LIBFTFILES		=	ft_strchr.c \
 					ft_itoa.c \
 					ft_strlen.c \
 					ft_strdup.c \
-					# ft_itoa_base.c \
+					ft_isdigit.c \
+					ft_power.c \
 
 
 LIBFTSRCS		= $(addprefix libft/,$(LIBFTFILES))
